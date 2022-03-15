@@ -1,16 +1,18 @@
 import Phaser from "phaser";
 // Scenes
-import Game from "./src/scenes/Game";
+import Game from "./scenes/Game";
 
 const config = {
-  width: 800,
-  height: 1000,
+  width: 1920,
+  height: 480,
+  backgroundColor: "#90EE90",
   type: Phaser.AUTO,
   // Set Physics
   physics: {
     default: "arcade",
     arcade: {
-      gravity: { y: 0 },
+      gravity: { y: 700 },
+      debug: true,
     },
   },
   scene: [Game],

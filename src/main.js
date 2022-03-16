@@ -3,8 +3,8 @@ import Phaser from "phaser";
 import Game from "./scenes/Game";
 
 const config = {
-  width: 1920,
-  height: 480,
+  width: 3000,
+  height: 750,
   backgroundColor: "#90EE90",
   type: Phaser.AUTO,
   // Set Physics

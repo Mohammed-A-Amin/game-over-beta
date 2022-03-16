@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 // assets
-import background from "../assets/img/volcano.png";
+import background from "../assets/img/castle.jpg";
 // external classes
 import Player from "../objects/Player";
 
@@ -14,18 +14,19 @@ export default class Game extends Phaser.Scene {
     // Player image needs to be associated with Player Atlas
     this.load.atlas("player", "assets/player.png", "assets/player_atlas.json");
     // load tileset and json files
-    this.load.image("tiles", "assets/volcano.png");
-    this.load.tilemapTiledJSON("map", "assets/volcano-level.json");
+    this.load.image("tiles", "assets/grassworld.png");
+    this.load.tilemapTiledJSON("map", "assets/grasslevel.json");
   }
 
   create() {
     // SET WORLD bounds
     // load the background image
-    this.bg = this.add.image(0, 0, "bg").setOrigin(0, 0);
+    this.bg = this.add.image(0, 0, "bg").setOrigin(0, 0).setScale(1.5,1.5);
     // Load tilemap
     const map = this.make.tilemap({ key: "map" });
-    const tileset = map.addTilesetImage("volcano-level", "tiles");
-    const platforms = map.createLayer("platforms-layer", tileset, 0, 0);
+    const tileset = map.addTilesetImage("grass-level", "tiles");
+    const platforms = map.createLayer("platforms", tileset, 0, 0);
+    const background = map.createLayer("background", tileset, 0, 0 );
     platforms.setCollisionByExclusion(-1, true);
 
     // adding the player and physics for player

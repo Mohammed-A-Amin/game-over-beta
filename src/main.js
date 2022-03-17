@@ -18,4 +18,5 @@ const config = {
   scene: [Game],
 };
 
-new Phaser.Game(config);
+document.getElementById("startGame").addEventListener('click', 
+function(){ new Phaser.Game(config)});

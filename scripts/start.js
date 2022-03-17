@@ -40,7 +40,7 @@ if (!fs.existsSync(paths.build.assets)) {
 // Call parcel
 require("child_process").spawn(
   "parcel",
-  ["index.html", "-p 8000", "--open", "--dist-dir", "build"],
+  ["title.html", "index.html", "-p 8000", "--open", "--dist-dir", "build"],
   {
     stdio: ["ignore", "inherit", "inherit"],
     shell: true,

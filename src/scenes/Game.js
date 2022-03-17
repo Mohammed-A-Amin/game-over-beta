@@ -3,6 +3,7 @@ import Phaser from "phaser";
 import background from "../assets/img/castle.jpg";
 // external classes
 import Player from "../objects/Player";
+import { addCoins } from "../data.js";
 
 export default class Game extends Phaser.Scene {
   constructor() {
@@ -95,7 +96,7 @@ export default class Game extends Phaser.Scene {
       }
     } else if (this.cursors.right.isDown) {
       this.player.setVelocityX(100);
-      console.log("walking right");
+      addCoins();
       if (this.player.body.onFloor()) {
         this.player.play("walk", true);
       }

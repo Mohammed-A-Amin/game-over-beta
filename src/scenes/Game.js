@@ -19,9 +19,11 @@ export default class Game extends Phaser.Scene {
   }
 
   create() {
+    this.cameras.main.setZoom(3);
+    this.cameras.main.setBounds(0, 0, 1024, 749);
     // SET WORLD bounds
     // load the background image
-    this.bg = this.add.image(0, 0, "bg").setOrigin(0, 0).setScale(1.5,1.5);
+    this.bg = this.add.image(0, 0, "bg").setOrigin(0, 0).setScale(3,3);
     // Load tilemap
     const map = this.make.tilemap({ key: "map" });
     const tileset = map.addTilesetImage("grass-level", "tiles");
@@ -32,7 +34,7 @@ export default class Game extends Phaser.Scene {
     // adding the player and physics for player
     // this.player = new Player(this, 0, 200, "player");
     this.player = this.physics.add
-      .sprite(0, 200, "player")
+      .sprite(10, 200, "player")
       .setScale(0.2)
       .setCollideWorldBounds(true);
 
@@ -65,7 +67,13 @@ export default class Game extends Phaser.Scene {
     this.physics.add.collider(this.player, platforms);
     // Get inputs
     this.cursors = this.input.keyboard.createCursorKeys();
+
+    this.cameras.main.startFollow(this.player);
+    
   }
+
+
+
 
   update() {
     // This will Ideally be handled by the Player class too
@@ -76,6 +84,7 @@ export default class Game extends Phaser.Scene {
       }
     } else if (this.cursors.right.isDown) {
       this.player.setVelocityX(100);
+      console.log("walking right")
       if (this.player.body.onFloor()) {
         this.player.play("walk", true);
       }

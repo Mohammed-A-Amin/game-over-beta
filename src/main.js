@@ -3,7 +3,7 @@ import Phaser from "phaser";
 import Game from "./scenes/Game";
 
 const config = {
-  width: 3000,
+  width: 1025,
   height: 750,
   backgroundColor: "#90EE90",
   type: Phaser.AUTO,

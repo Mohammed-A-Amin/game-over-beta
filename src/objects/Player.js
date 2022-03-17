@@ -6,8 +6,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.playerSprite = scene.add.existing(this);
   }
 
+  
   preload() {}
-
+  
   create() {}
 
   update() {}

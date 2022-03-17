@@ -19,22 +19,23 @@ export default class Game extends Phaser.Scene {
   }
 
   create() {
-    this.cameras.main.setZoom(3);
-    this.cameras.main.setBounds(0, 0, 1024, 749);
-    // SET WORLD bounds
     // load the background image
-    this.bg = this.add.image(0, 0, "bg").setOrigin(0, 0).setScale(3,3);
+    this.bg = this.add
+      .image(0, 0, "bg")
+      .setOrigin(0, 0)
+      .setDisplaySize(3000, 750);
+    // SET WORLD bounds
     // Load tilemap
     const map = this.make.tilemap({ key: "map" });
     const tileset = map.addTilesetImage("grass-level", "tiles");
     const platforms = map.createLayer("platforms", tileset, 0, 0);
-    const background = map.createLayer("background", tileset, 0, 0 );
+    const background = map.createLayer("background", tileset, 0, 0);
     platforms.setCollisionByExclusion(-1, true);
 
     // adding the player and physics for player
     // this.player = new Player(this, 0, 200, "player");
     this.player = this.physics.add
-      .sprite(10, 200, "player")
+      .sprite(10, 650, "player")
       .setScale(0.2)
       .setCollideWorldBounds(true);
 
@@ -63,17 +64,27 @@ export default class Game extends Phaser.Scene {
       frameRate: 10,
     });
 
+    // Set bounds to the image of bacground
+    // This is where you determine the world bounds by setting it to width and height of your background
+    this.physics.world.setBounds(
+      0,
+      0,
+      background.displayWidth,
+      background.displayHeight
+    );
+
     // Collision between Map and Player
     this.physics.add.collider(this.player, platforms);
     // Get inputs
     this.cursors = this.input.keyboard.createCursorKeys();
 
-    this.cameras.main.startFollow(this.player);
-    
+    // Setting the cameras zoom and content to the size of your background!
+    // Do the same thing here set the background size to the camera and bound it to bound
+    this.cameras.main
+      .setBounds(0, 0, background.displayWidth, background.displayHeight)
+      .startFollow(this.player)
+      .setZoom(3);
   }
-
-
-
 
   update() {
     // This will Ideally be handled by the Player class too
@@ -84,7 +95,7 @@ export default class Game extends Phaser.Scene {
       }
     } else if (this.cursors.right.isDown) {
       this.player.setVelocityX(100);
-      console.log("walking right")
+      console.log("walking right");
       if (this.player.body.onFloor()) {
         this.player.play("walk", true);
       }

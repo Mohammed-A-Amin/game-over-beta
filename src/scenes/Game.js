@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 // assets
-import background from "../assets/img/castle.jpg";
+import background from "../assets/img/sky.png";
 // external classes
 import Player from "../objects/Player";
 import { addCoins } from "../data.js";

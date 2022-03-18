@@ -16,10 +16,11 @@ export default class Game extends Phaser.Scene {
     this.load.atlas("player", "assets/player.png", "assets/player_atlas.json");
     // load tileset and json files
     this.load.image("tiles", "assets/grassworld.png");
-    this.load.tilemapTiledJSON("map", "assets/grasslevel.json");
+    this.load.tilemapTiledJSON("map", "assets/grasslevel2.json");
   }
 
   create() {
+
     // load the background image
     this.bg = this.add
       .image(0, 0, "bg")
@@ -31,8 +32,15 @@ export default class Game extends Phaser.Scene {
     const tileset = map.addTilesetImage("grass-level", "tiles");
     const platforms = map.createLayer("platforms", tileset, 0, 0);
     const background = map.createLayer("background", tileset, 0, 0);
+    const deadly = map.createLayer("deadly", tileset, 0, 0);
+    // this.physics.add.collider(this.player, deadly, () => {
+    //   if (true) {
+    //     this.scene.start("GameOver");
+    //   }
+    // });
+    
     platforms.setCollisionByExclusion(-1, true);
-
+  
     // adding the player and physics for player
     // this.player = new Player(this, 0, 200, "player");
     this.player = this.physics.add
@@ -96,7 +104,7 @@ export default class Game extends Phaser.Scene {
       }
     } else if (this.cursors.right.isDown) {
       this.player.setVelocityX(100);
-      addCoins();
+      addCoins()
       if (this.player.body.onFloor()) {
         this.player.play("walk", true);
       }
@@ -118,6 +126,7 @@ export default class Game extends Phaser.Scene {
     ) {
       this.player.setVelocityY(-350);
       this.player.play("jump", true);
+
     }
     if (this.player.body.velocity.x > 0) {
       this.player.setFlipX(false);

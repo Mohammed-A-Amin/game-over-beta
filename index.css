@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@300&family=Fruktur&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@300&family=Fruktur&family=Press+Start+2P&display=swap');
+
+button {
+    display: inline-block;
+    background-color: #bc90fa;
+    border-radius: 10px;
+    border: 4px double #cccccc;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 300px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  button:hover {
+    background-color: #f7c2f9;
+  }
+  button:hover span {
+    padding-right: 25px;
+  }
+  button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+header::before {
+    height: 10vh;
+    background-color: #000000;
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.5;
+}
+header {
+    height: 10vh;
+    width: 100%;
+    color: #ffffff;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(71,9,121,1) 35%, rgba(2,0,36,1) 100%, rgba(0,212,255,1) 100%);
+    
+    text-align: center;
+    font-family: 'Press Start 2P', 'sans-serif';
+  }
+  header div{
+    position: relative;
+    text-align: center;
+    font-family: 'Press Start 2P', 'sans-serif';
+  }
+  header h1{
+    font-size:  100px;
+    font-family: 'Press Start 2P', 'sans-serif';
+  }
+
+  button{
+    font-family: 'Press Start 2P', 'sans-serif';
+  }
+
+  .ggc{
+    color:#c49aff
+  }
+ 

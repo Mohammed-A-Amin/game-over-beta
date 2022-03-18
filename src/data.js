@@ -1,6 +1,5 @@
-let addCoin = document.getElementById("addCoin").addEventListener('click', addCoins)
-let coinDisplay = document.getElementById("score-amount")
-let userName = document.getElementById("userName")
+let coinDisplay = document.getElementById("score-amount");
+let userName = document.getElementById("userName");
 
 window.onload = function(){
     initPlayer()

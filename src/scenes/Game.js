@@ -3,7 +3,8 @@ import Phaser from "phaser";
 import background from "../assets/img/sky.png";
 // external classes
 import Player from "../objects/Player";
-import { addCoins } from "../data.js";
+import { addCoins, subtractRisk } from "../data.js";
+import { addRisk } from "../data.js";
 
 export default class Game extends Phaser.Scene {
   constructor() {
@@ -33,20 +34,17 @@ export default class Game extends Phaser.Scene {
     const platforms = map.createLayer("platforms", tileset, 0, 0);
     const background = map.createLayer("background", tileset, 0, 0);
     const deadly = map.createLayer("deadly", tileset, 0, 0);
-    // this.physics.add.collider(this.player, deadly, () => {
-    //   if (true) {
-    //     this.scene.start("GameOver");
-    //   }
-    // });
-    
+
+    deadly.setCollisionByExclusion(-1, true);
     platforms.setCollisionByExclusion(-1, true);
-  
+    // this.physics.add.existing(deadly)
     // adding the player and physics for player
     // this.player = new Player(this, 0, 200, "player");
     this.player = this.physics.add
       .sprite(10, 650, "player")
       .setScale(0.2)
       .setCollideWorldBounds(true);
+
 
     // Player Animations - Ideally this needs to happen in player class
     // Ran into issues with Player class so lets leave it here for now
@@ -84,6 +82,15 @@ export default class Game extends Phaser.Scene {
 
     // Collision between Map and Player
     this.physics.add.collider(this.player, platforms);
+    this.physics.add.collider(this.player, deadly, () => {
+      if (true)
+      {
+        // this.player.x = 10 
+        this.scene.start('GameOver')
+        subtractRisk();
+        
+      }
+    });
     // Get inputs
     this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -103,8 +110,7 @@ export default class Game extends Phaser.Scene {
         this.player.play("walk", true);
       }
     } else if (this.cursors.right.isDown) {
-      this.player.setVelocityX(100);
-      addCoins()
+      this.player.setVelocityX(500);
       if (this.player.body.onFloor()) {
         this.player.play("walk", true);
       }

@@ -11,7 +11,8 @@ function createPlayer(){
     if (window.localStorage.getItem("player") === null){
         let newPlayer = {
             userName:  document.getElementById("userField").value,
-            coins: 10
+            coins: 10,
+            risk: 0
     }   
     console.log(newPlayer)
     updateLocalStorage(newPlayer);

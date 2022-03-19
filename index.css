@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo:wght@300&family=Fruktur&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Exo:wght@300&family=Fruktur&family=Press+Start+2P&display=swap');
 
+body{
+  background-color: black;
+}
 button {
     display: inline-block;
     background-color: #bc90fa;
@@ -41,7 +44,7 @@ button {
   }
 
 header::before {
-    height: 10vh;
+   
     background-color: #000000;
     content: "";
     position: absolute;
@@ -52,7 +55,7 @@ header::before {
     opacity: 0.5;
 }
 header {
-    height: 10vh;
+  
     width: 100%;
     color: #ffffff;
     position: relative;
@@ -83,5 +86,15 @@ header {
 
   .ggc{
     color:#c49aff
+  }
+
+  #submitRisk{
+    padding: 10px;
+    margin: 50px;
+  }
+  #risk {
+    padding: 10px;
+    text-align: center;
+    margin: 20px;
   }
  

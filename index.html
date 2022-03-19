@@ -12,9 +12,12 @@
   <body>
     <header class="d-flex align-items-center">
     <div id="mario">
+      <h1 class = "game-over"></h1>
       <div class="score"><span class = "ggc">GG COIN:</span> <span id="score-amount"></span>$</i></div>
-      <div id = "welcome">Fight On Sir <span id="userName"></span> <span>!</span></div>
-      <!-- <button id = "startGame"> start game</button> -->
+      <div id = "welcome">ONWARDS <span id="userName"></span> <span>!</span></div>
+      <input type = "number" placeholder = "Enter Risk Amount" id = "risk"></input>
+      <button type = "button" id = "submitRisk">RISK</button>
+      <p id = "riskText"></p>
   </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <script type="module" src="src/data.js"></script>

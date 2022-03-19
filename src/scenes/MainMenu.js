@@ -1,5 +1,6 @@
 import background from "../assets/img/castle.jpg";
 import playbutton from "../assets/img/playbutton.png"
+import gameover from "../assets/img/game.jpg"
 
 export default class Game extends Phaser.Scene {
 
@@ -14,6 +15,7 @@ export default class Game extends Phaser.Scene {
         this.load.image('menuBg', `${background}`);
     
         this.load.image('play_button', `${playbutton}`);
+        
         
         // this.load.audio('theme', [
         //     '../assets/img/gameoverost.mp3'

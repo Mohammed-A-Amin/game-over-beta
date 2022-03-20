@@ -1,10 +1,11 @@
 import Phaser from "phaser";
 // assets
-import background from "../assets/img/sky.png";
+import background from "../assets/img/background.png";
 // external classes
 import Player from "../objects/Player";
 import { addCoins, subtractRisk } from "../data.js";
 import { addRisk } from "../data.js";
+import { dogeRisk } from "../data.js";
 
 export default class Game extends Phaser.Scene {
   constructor() {
@@ -12,6 +13,7 @@ export default class Game extends Phaser.Scene {
   }
 
   preload() {
+    this.load.audio("bgMusic", "assets/gameoverost.mp3" )
     this.load.image("bg", `${background}`);
     // Player image needs to be associated with Player Atlas
     this.load.atlas("player", "assets/player.png", "assets/player_atlas1.json");
@@ -22,7 +24,8 @@ export default class Game extends Phaser.Scene {
   }
 
   create() {
-
+    let music = this.sound.add('bgMusic')
+    music.play();
     // load the background image
     this.bg = this.add
       .image(0, 0, "bg")
@@ -104,6 +107,16 @@ export default class Game extends Phaser.Scene {
         // this.player.x = 10 
         this.scene.start('GameOver')
         subtractRisk();
+        
+      }
+    });
+
+    this.physics.add.collider(this.player, doge, () => {
+      if (true)
+      {
+        // this.player.x = 10 
+        this.scene.start('DOGE')
+        dogeRisk();
         
       }
     });

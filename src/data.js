@@ -2,8 +2,6 @@ let coinDisplay = document.getElementById("score-amount");
 let userName = document.getElementById("userName");
 
 
-
-
 window.onload = function(){
     initPlayer()
     document.getElementById("submitRisk").addEventListener("click", riskCreate)
@@ -28,13 +26,13 @@ export function riskCreate(){
         return
     } 
     else{
+    
         document.getElementById('riskText').innerHTML = "You have risked " + currentPlayer.risk + " coins!"
         button.remove();
         input.remove();
         updateLocalStorage(currentPlayer)
         return 
     }
-
 }
 
 export function addRisk(){

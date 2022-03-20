@@ -3,11 +3,11 @@ import Phaser from "phaser";
 import Game from "./scenes/Game";
 import GameOver from './scenes/GameOver.js'
 import MainMenu from "./scenes/MainMenu";
+import DogeOver from "./scenes/Doge";
 import Win from './scenes/Win.js'
 import {riskCreate, loadData, initPlayer } from "./data.js";
 
 let currentPlayer = {}
-
 
 const config = {
   width: 1025,
@@ -20,10 +20,10 @@ const config = {
     default: "arcade",
     arcade: {
       gravity: { y: 700 },
-      debug: true,
+      debug: false,
     },
   },
-  scene: [MainMenu, Game, GameOver, Win]
+  scene: [MainMenu, Game, GameOver, Win, DogeOver]
 };
 
 export function initGame(){

@@ -10,6 +10,18 @@
   </head>
   <body>
     <header class="d-flex align-items-center">
+      <audio id = "bgMusic" class="my_audio" controls autoplay='true'  hidden = "true" loop = "true" >
+        <source src="./src/assets/img/mountain.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+      document.getElementById('bgMusic').volume = 0.4
+      document.addEventListener('click', playAudio)
+      let audio = new Audio("./src/assets/img/mountain.mp3")
+      function playAudio(){
+        audio.play()
+        audio.loop = true
+      }
+    </script>
     <div id="mario">
       <h1>GAME OVER</h1>
       <br>

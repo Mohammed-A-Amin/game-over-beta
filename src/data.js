@@ -45,9 +45,15 @@ export function addRisk(){
 }
 
 export function subtractRisk(){
-    console.log(currentPlayer.risk)
     loadPlayerProfile()
     currentPlayer.coins -= currentPlayer.risk
+    updateLocalStorage(currentPlayer)
+    coinDisplay.innerHTML = currentPlayer.coins
+}
+
+export function dogeRisk(){
+    loadPlayerProfile()
+    currentPlayer.coins = currentPlayer.coins / 2
     updateLocalStorage(currentPlayer)
     coinDisplay.innerHTML = currentPlayer.coins
 }

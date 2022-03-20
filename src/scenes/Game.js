@@ -14,10 +14,11 @@ export default class Game extends Phaser.Scene {
   preload() {
     this.load.image("bg", `${background}`);
     // Player image needs to be associated with Player Atlas
-    this.load.atlas("player", "assets/player.png", "assets/player_atlas.json");
+    this.load.atlas("player", "assets/player.png", "assets/player_atlas1.json");
+    this.load.atlas("knight", "assets/knight2.png", "assets/knight2.json");
     // load tileset and json files
-    this.load.image("tiles", "assets/grassworld.png");
-    this.load.tilemapTiledJSON("map", "assets/grasslevel2.json");
+    this.load.image("tiles", "assets/grassworld2.png");
+    this.load.tilemapTiledJSON("map", "assets/grasslevel4.json");
   }
 
   create() {
@@ -30,44 +31,59 @@ export default class Game extends Phaser.Scene {
     // SET WORLD bounds
     // Load tilemap
     const map = this.make.tilemap({ key: "map" });
-    const tileset = map.addTilesetImage("grass-level", "tiles");
+    const tileset = map.addTilesetImage("grassworld2", "tiles");
     const platforms = map.createLayer("platforms", tileset, 0, 0);
     const background = map.createLayer("background", tileset, 0, 0);
     const deadly = map.createLayer("deadly", tileset, 0, 0);
+    const finish = map.createLayer("finish", tileset, 0, 0);
+    const doge = map.createLayer("doge", tileset, 0, 0);
+    
+    // const doge = map.createLayer("doge", tileset, 0, 0);
 
+    doge.setCollisionByExclusion(-1, true);
+    finish.setCollisionByExclusion(-1, true);
     deadly.setCollisionByExclusion(-1, true);
     platforms.setCollisionByExclusion(-1, true);
     // this.physics.add.existing(deadly)
     // adding the player and physics for player
     // this.player = new Player(this, 0, 200, "player");
     this.player = this.physics.add
-      .sprite(10, 650, "player")
-      .setScale(0.2)
+      .sprite(30, 500, "knight")
+      .setScale(0.03)
       .setCollideWorldBounds(true);
 
 
     // Player Animations - Ideally this needs to happen in player class
     // Ran into issues with Player class so lets leave it here for now
-    this.anims.create({
-      key: "idle",
-      frames: [{ key: "player", frame: "robo_player_0" }],
-      frameRate: 10,
-    });
 
     this.anims.create({
       key: "walk",
-      frames: this.anims.generateFrameNames("player", {
-        prefix: "robo_player_",
-        start: 2,
-        end: 3,
+      frames: this.anims.generateFrameNames("knight", {
+        prefix: "walk_",
+        start: 0,
+        end: 1,
       }),
       frameRate: 10,
       repeat: -1,
     });
 
     this.anims.create({
+      key: "idle",
+      
+      frames: [{ key: "knight", frame: "idle.png" }],
+      frameRate: 10,
+    });
+
+
+    // this.anims.create({
+    //   key: "walk",
+    //   frames: [{key: "knight", frame: "walk1.png",}],
+    //   frameRate: 10,
+    // });
+
+    this.anims.create({
       key: "jump",
-      frames: [{ key: "player", frame: "robo_player_1" }],
+      frames: [{ key: "knight", frame: "jump.png" }],
       frameRate: 10,
     });
 
@@ -91,6 +107,16 @@ export default class Game extends Phaser.Scene {
         
       }
     });
+
+    this.physics.add.collider(this.player, finish, () => {
+      if (true)
+      {
+        // this.player.x = 10 
+        this.scene.start('Win')
+        addRisk();
+        
+      }
+    });
     // Get inputs
     this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -110,7 +136,7 @@ export default class Game extends Phaser.Scene {
         this.player.play("walk", true);
       }
     } else if (this.cursors.right.isDown) {
-      this.player.setVelocityX(500);
+      this.player.setVelocityX(100);
       if (this.player.body.onFloor()) {
         this.player.play("walk", true);
       }
@@ -132,7 +158,7 @@ export default class Game extends Phaser.Scene {
     ) {
       this.player.setVelocityY(-350);
       this.player.play("jump", true);
-
+  
     }
     if (this.player.body.velocity.x > 0) {
       this.player.setFlipX(false);

@@ -3,6 +3,7 @@ import Phaser from "phaser";
 import Game from "./scenes/Game";
 import GameOver from './scenes/GameOver.js'
 import MainMenu from "./scenes/MainMenu";
+import Win from './scenes/Win.js'
 import {riskCreate, loadData, initPlayer } from "./data.js";
 
 let currentPlayer = {}
@@ -22,7 +23,7 @@ const config = {
       debug: true,
     },
   },
-  scene: [MainMenu, Game, GameOver]
+  scene: [MainMenu, Game, GameOver, Win]
 };
 
 export function initGame(){

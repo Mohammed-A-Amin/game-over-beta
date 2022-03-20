@@ -3,6 +3,7 @@ const showAccount = document.querySelector('.showAccount');
 
 ethereumButton.addEventListener('click', () => {
   getAccount();
+  remove();
 });
 
 async function getAccount() {

@@ -37,7 +37,7 @@ export default class Game extends Phaser.Scene {
         .setOrigin(0, 0)
         .setDisplaySize(1300, 800);
     
-        var playButton = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 3, 'play_button').setDepth(1);
+        let playButton = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 3, 'play_button').setDepth(1);
     
         playButton.setInteractive();
     

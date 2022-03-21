@@ -14,6 +14,7 @@ export default class Game extends Phaser.Scene {
         this.load.image('win', `${win}`);
         this.load.image('replay', `${replay}`);
         this.load.audio("victory", "assets/victory.mp3" )
+        this.load.audio("start", "assets/game-start.mp3" )
         
         // this.load.audio('theme', [
         //     '../assets/img/gameoverost.mp3'
@@ -22,7 +23,7 @@ export default class Game extends Phaser.Scene {
     }
     
     onObjectClicked() {
-    
+
         window.location.reload()
     
     }

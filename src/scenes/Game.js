@@ -174,7 +174,7 @@ export default class Game extends Phaser.Scene {
       (this.cursors.space.isDown || this.cursors.up.isDown) &&
       this.player.body.onFloor()
     ) {
-      this.player.setVelocityY(-340);
+      this.player.setVelocityY(-348);
       this.player.play("jump", true);
       let jumpSound = this.sound.add('jumpSound', {volume: 0.1})
       jumpSound.play();

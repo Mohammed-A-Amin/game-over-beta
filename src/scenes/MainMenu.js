@@ -7,15 +7,16 @@ export default class Game extends Phaser.Scene {
     constructor() {
 
         super('bootGame')
-    
     }
     
+
     preload() {
          
         this.load.image('menuBg', `${background}`);
-    
+        this.load.audio("menuMusic", "assets/mountain.mp3" )
         this.load.image('play_button', `${playbutton}`);
-        
+        this.load.audio("start", "assets/game-start.mp3" )
+    
         
         // this.load.audio('theme', [
         //     '../assets/img/gameoverost.mp3'
@@ -24,14 +25,19 @@ export default class Game extends Phaser.Scene {
     }
     
     onObjectClicked() {
-    
+        // let menuMusic = this.sound.add('menuMusic', {volume: 0.5})
+        // menuMusic.stop()
+
+        let start = this.sound.add('start')
+        start.play();
         this.scene.start('game-playing')
+       
     
     }
     
     create() {
-    
-
+        // menuMusic = this.sound.add('menuMusic', {volume: 0.5})
+        // menuMusic.play();
         this.bg = this.add
         .image(0, 0, "menuBg")
         .setOrigin(0, 0)

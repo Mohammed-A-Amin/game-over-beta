@@ -12,9 +12,11 @@ class DogeOver extends Phaser.Scene {
         this.load.image('replay', `${replay}`);
         this.load.image('doge', `${doge}`);
         this.load.audio("troll", "assets/trollsound.mp3" )
+        this.load.audio("start", "assets/game-start.mp3" )
     }
     onObjectClicked() {
-    
+        let start = this.sound.add('start')
+        start.play();
         window.location.reload()
     
     }

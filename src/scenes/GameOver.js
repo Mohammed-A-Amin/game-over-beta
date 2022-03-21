@@ -12,9 +12,11 @@ class GameOver extends Phaser.Scene {
         this.load.image('over', `${gameover}`);
         this.load.image('replay', `${replay}`);
         this.load.audio("gameEffect", "assets/gameover.mp3" )
+        this.load.audio("start", "assets/game-start.mp3" )
     }
     onObjectClicked() {
-    
+        let start = this.sound.add('start')
+        start.play();
         window.location.reload()
     
     }

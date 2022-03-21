@@ -11,6 +11,7 @@ class DogeOver extends Phaser.Scene {
      
         this.load.image('replay', `${replay}`);
         this.load.image('doge', `${doge}`);
+        this.load.audio("troll", "assets/trollsound.mp3" )
     }
     onObjectClicked() {
     
@@ -18,6 +19,8 @@ class DogeOver extends Phaser.Scene {
     
     }
     create() {
+        let troll = this.sound.add('troll')
+        troll.play();
         this.cameras.main.setBackgroundColor('#000');
         let replay = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 4, 'replay').setDepth(2).setScale(0.1,0.1);
         this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2, 'doge').setDepth(1);

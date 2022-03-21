@@ -11,7 +11,7 @@ export default class Game extends Phaser.Scene {
     }
     
     preload() {
-    
+         
         this.load.image('menuBg', `${background}`);
     
         this.load.image('play_button', `${playbutton}`);

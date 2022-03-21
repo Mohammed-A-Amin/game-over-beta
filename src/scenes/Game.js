@@ -14,6 +14,7 @@ export default class Game extends Phaser.Scene {
 
   preload() {
     this.load.audio("bgMusic", "assets/gameoverost.mp3" )
+    this.load.audio("jumpSound", "assets/jump.mp3")
     this.load.image("bg", `${background}`);
     // Player image needs to be associated with Player Atlas
     this.load.atlas("player", "assets/player.png", "assets/player_atlas1.json");
@@ -26,6 +27,7 @@ export default class Game extends Phaser.Scene {
   create() {
     let music = this.sound.add('bgMusic')
     music.play();
+    music.loop = true;
     // load the background image
     this.bg = this.add
       .image(0, 0, "bg")
@@ -52,7 +54,7 @@ export default class Game extends Phaser.Scene {
     // this.player = new Player(this, 0, 200, "player");
     this.player = this.physics.add
       .sprite(30, 500, "knight")
-      .setScale(0.03)
+      .setScale(0.05)
       .setCollideWorldBounds(true);
 
 
@@ -107,6 +109,7 @@ export default class Game extends Phaser.Scene {
         // this.player.x = 10 
         this.scene.start('GameOver')
         subtractRisk();
+        music.stop()
         
       }
     });
@@ -117,6 +120,7 @@ export default class Game extends Phaser.Scene {
         // this.player.x = 10 
         this.scene.start('DOGE')
         dogeRisk();
+        music.stop()
         
       }
     });
@@ -127,6 +131,7 @@ export default class Game extends Phaser.Scene {
         // this.player.x = 10 
         this.scene.start('Win')
         addRisk();
+        music.stop()
         
       }
     });
@@ -169,8 +174,10 @@ export default class Game extends Phaser.Scene {
       (this.cursors.space.isDown || this.cursors.up.isDown) &&
       this.player.body.onFloor()
     ) {
-      this.player.setVelocityY(-350);
+      this.player.setVelocityY(-340);
       this.player.play("jump", true);
+      let jumpSound = this.sound.add('jumpSound', {volume: 0.1})
+      jumpSound.play();
   
     }
     if (this.player.body.velocity.x > 0) {

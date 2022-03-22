@@ -31,9 +31,8 @@ export function initGame(){
   console.log(currentPlayer)
   console.log(currentPlayer.coins, currentPlayer.risk)
 
-  if (currentPlayer.coins >= currentPlayer.risk){
+  if (currentPlayer.coins >= currentPlayer.risk && currentPlayer.risk > 0 && Number.isInteger(currentPlayer.risk)){
       new Phaser.Game(config);
-      console.log("called here")
       return
   } 
 

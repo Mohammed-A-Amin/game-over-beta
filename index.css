@@ -91,6 +91,16 @@ header {
   #submitRisk{
     padding: 10px;
     margin: 50px;
+    border-radius: 15px;
+  }
+  #resetRisk{
+    padding: 10px;
+    margin: 30px;
+    background-color: darkslateblue;
+    border-radius: 15px;
+  }
+  #resetRisk:hover{
+    background-color: #c49aff
   }
   #risk {
     padding: 10px;

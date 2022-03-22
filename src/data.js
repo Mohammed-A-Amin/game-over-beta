@@ -7,6 +7,19 @@ window.onload = function () {
   loadData();
 };
 
+
+// // document.getElementById("resetRisk").addEventListener("click", reset)
+
+// export function reset(){
+//   let button = document.getElementById("resetRisk");
+//   loadPlayerProfile();
+//   currentPlayer.coins = 1
+//   updateLocalStorage(currentPlayer);
+//   button.remove();
+//   coinDisplay.innerHTML = 1;
+
+//   return 
+// }
 export function displayRank() {
 let rank = document.getElementById("rank");
   if (currentPlayer.coins < 50) {
@@ -43,20 +56,37 @@ export function riskCreate() {
   currentPlayer.risk = parseInt(document.getElementById("risk").value);
   let button = document.getElementById("submitRisk");
   let input = document.getElementById("risk");
+  let reset = document.getElementById("resetRisk")
+
+  if (Number.isInteger(currentPlayer.risk)){
+    
 
   if (currentPlayer.coins < currentPlayer.risk) {
-    document.getElementById("riskText").innerHTML =
-      "You don't have enough coins!";
+    document.getElementById("riskText").innerHTML = "You don't have enough coins!";
     updateLocalStorage(currentPlayer);
     return;
-  } else {
-    document.getElementById("riskText").innerHTML =
-      "You have risked " + currentPlayer.risk + " coins!";
-    button.remove();
-    input.remove();
-    updateLocalStorage(currentPlayer);
-    return;
+
   }
+    else {
+      if (currentPlayer.risk <= 0){
+        document.getElementById("riskText").innerHTML = "Your risk must be greater than or equal to 0.";
+        updateLocalStorage(currentPlayer);
+        console.log("bad")
+        return;
+      }
+      document.getElementById("riskText").innerHTML =
+        "You have risked " + currentPlayer.risk + " coins!";
+      reset.remove();
+      button.remove();
+      input.remove();
+      updateLocalStorage(currentPlayer);
+      return;
+    }
+}
+else {
+  document.getElementById("riskText").innerHTML = "Please enter a number.";
+  return;
+} 
 }
 
 export function addRisk() {

@@ -13,7 +13,7 @@ const config = {
   width: 1025,
   height: 750,
   backgroundColor: "#90EE90",
-  autoCenter: true,
+  // autoCenter: Phaser.Scale.CENTER_BOTH,
   type: Phaser.AUTO,
   // Set Physics
   physics: {

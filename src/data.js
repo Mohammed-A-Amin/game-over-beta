@@ -4,22 +4,25 @@ let userName = document.getElementById("userName");
 window.onload = function () {
   initPlayer();
   document.getElementById("submitRisk").addEventListener("click", riskCreate);
+
   loadData();
 };
 
+document.addEventListener("click", ()=>{
+  document.getElementById("resetRisk").addEventListener("click", reset)
+})
 
-// // document.getElementById("resetRisk").addEventListener("click", reset)
+export function reset(){
+  console.log("called")
+  let button = document.getElementById("resetRisk");
+  loadPlayerProfile();
+  currentPlayer.coins = 1
+  updateLocalStorage(currentPlayer);
+  button.remove();
+  coinDisplay.innerHTML = 1;
 
-// export function reset(){
-//   let button = document.getElementById("resetRisk");
-//   loadPlayerProfile();
-//   currentPlayer.coins = 1
-//   updateLocalStorage(currentPlayer);
-//   button.remove();
-//   coinDisplay.innerHTML = 1;
-
-//   return 
-// }
+  return 
+}
 export function displayRank() {
 let rank = document.getElementById("rank");
   if (currentPlayer.coins < 50) {

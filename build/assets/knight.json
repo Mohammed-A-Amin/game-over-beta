@@ -1,0 +1,44 @@
+{"frames": [
+
+{
+	"filename": "idle.png",
+	"frame": {"x":0,"y":0,"w":700,"h":700},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":700,"h":700},
+	"sourceSize": {"w":700,"h":700}
+},
+{
+	"filename": "jump.png",
+	"frame": {"x":700,"y":0,"w":700,"h":700},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":700,"h":700},
+	"sourceSize": {"w":700,"h":700}
+},
+{
+	"filename": "walk1.png",
+	"frame": {"x":0,"y":700,"w":672,"h":672},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":672,"h":672},
+	"sourceSize": {"w":672,"h":672}
+},
+{
+	"filename": "walk2.png",
+	"frame": {"x":672,"y":700,"w":672,"h":672},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":672,"h":672},
+	"sourceSize": {"w":672,"h":672}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "knight.png",
+	"format": "RGBA8888",
+	"size": {"w":1400,"h":1372},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a1739ad71258e00d1d24011eafbe6dea:6766f27e8be27f8876dd79d7e951d2c0:775abec68cea152a8c833d779d2191cb$"
+}
+}
